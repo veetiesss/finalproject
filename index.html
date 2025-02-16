@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrap">
+        <main class="main">
+            <nav class="main__nav">
+                <div class="nav__upperNav">
+                    <img src="images/logo.png" alt="Миюши лого" class="upperNav__logo">
+                    <p class="Kyiv__city"><img src="images/maps-and-flags.png" alt="">г. Киев</p>
+                    <p class="email__adress"><img src="images/envelope.png" alt="envelope">test@gmail.com</p>
+                    <div class="upperNav__graphic">
+                        <div class="graphic__info">
+                            <p class="info__phone">+380 (800) 333 2 222</p>
+                            <p class="info__time">Работаем с 11.00 до 23.00</p>
+                        </div>
+                        <button class="graphic__backCall">Обратный звонок</button>
+                    </div>
+                </div>
+                <div class="nav__lowerNav">
+                    <button>МЕНЮ</button>
+                    <button>АКЦИИ И СКИДКИ</button>
+                    <button>ДОСТАВКА И ОПЛАТА</button>
+                    <button>НОВОСТИ</button>
+                    <button>КОНТАКТЫ</button>
+                    <button>КАБИНЕТ</button>
+                    <button>КОРЗИНА</button>
+                </div>
+            </nav>
+            <swiper-container class="mySwiper" navigation="true" pagination="true" keyboard="true" mousewheel="true"
+                css-mode="true">
+                <swiper-slide>
+                    <header class="header">
+                        <div class="header__box">
+                            <h2 class="box__title_header">Очень дешево</h2>
+                            <div class="box__discount_header">скидка 15%</div>
+                        </div>
+                        <p class="header__time">С 11:00 до 16:00 в будние дни</p>
+                        <button class="header__more">ПОДРОБНЕЕ</button>
+                    </header>
+                </swiper-slide>
+                <swiper-slide>
+                    <header class="header">
+                        <div class="header__box">
+                            <h2 class="box__title_header">Быстрая доставка</h2>
+                            <div class="box__discount_header">скидка 15%</div>
+                        </div>
+                        <p class="header__time">С 11:00 до 16:00 в будние дни</p>
+                        <button class="header__more">ПОДРОБНЕЕ</button>
+                    </header>
+                </swiper-slide>
+                <swiper-slide>
+                    <header class="header">
+                        <div class="header__box">
+                            <h2 class="box__title_header">Счастливые часы</h2>
+                            <div class="box__discount_header">скидка 15%</div>
+                        </div>
+                        <p class="header__time">С 11:00 до 16:00 в будние дни</p>
+                        <button class="header__more">ПОДРОБНЕЕ</button>
+                    </header>
+                </swiper-slide>
+            </swiper-container>
+            <div class="main_container">
+                <h3 class="main__titleWeb">Сети</h3>
+                <div class="main__Web">
+                    <div class="Web__box">
+                        <img src="images/sushi1.png" alt="sushi1" class="box__image_web">
+                        <h3 class="box__title_web">Сет N10</h3>
+                        <p class="box__info_web">72 шт. | 1560 г. | 1700 Kkal</p>
+                        <div class="box_container">
+                            <p class="box__cost_web">2050 грн.</p>
+                            <div class="box__amount_container">
+                                <button class="amount__descrease">-</button>
+                                <p class="amount">1</p>
+                                <button class="amount__increase">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="Web__box">
+                        <img src="images/sushi2.png" alt="sushi2" class="box__image_web">
+                        <h3 class="box__title_web">Сет N8</h3>
+                        <p class="box__info_web">24 шт. | 960 г. | 800 Kkal</p>
+                    </div>
+                    <div class="Web__box">
+                        <img src="images/sushi3.png" alt="sushi3" class="box__image_web">
+                        <h3 class="box__title_web">Минисет N5</h3>
+                        <p class="box__info_web">14 шт. | 450 г. | 400 Kkal</p>
+                    </div>
+                    <div class="Web__box">
+                        <img src="images/sushi4.png" alt="sushi4" class="box__image_web">
+                        <h3 class="box__title_web">Сет N6</h3>
+                        <p class="box__info_web">16 шт. | 460 г. | 490 Kkal</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>   
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+</body>
+</html>
