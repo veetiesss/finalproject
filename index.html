@@ -4,13 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/swiper.css"> -->
+    <link rel="stylesheet" href="css/BurgerMenu.css">
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/modalWindow.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/just-validate@latest/dist/just-validate.production.min.js"></script>
+
+    <style>
+        .NewAndDiscount_container {
+            background-color: rgb(0, 0, 0);
+            display: flex;
+            gap: 67px;
+            width: 1910px;
+        }
+    </style>
 </head>
 <body>
+    <!-- Модальное окно -->
+			<div id="BlurForModalWin" class="hidden"></div>
+			<div class="modal__window hidden">
+				<div class="window__frame">
+					<div class="frame__info">
+						<h2 id="ModalStatus">Подзвонити</h2>
+						<div class="info__exit_action">
+							<div class="exit__btn">&times;</div>
+						</div>
+					</div>
+					<div class="frame__content">
+						<form id="registerForm">
+							<span class="registerForm__span">
+								<select class="span__number">
+									<option value="+380">🇺🇦</option>
+								</select>
+								<input
+									type="tel"
+									class="registerForm__input_tel"
+									value="+380"
+								/>
+							</span>
+							<p class="invalidNumber"></p>
+							<div class="content_container"></div>
+							<button type="submit" class="registerForm__btn_register">
+								Подзвонити
+							</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			<!-- ------------------------------------------------------------------------- -->
+			<!-- бургер меню -->
+			<div id="BlurForModalWin" class="hidden"></div>
+			<div class="burgerMenu hidden">
+				<i class="fa-solid fa-bars burgerMenu_close"></i>
+				<ul class="burgerMenu__list">
+					<li><button>МЕНЮ</button></li>
+					<li><button>АКЦИИ И СКИДКИ</button></li>
+					<li><button>ДОСТАВКА И ОПЛАТА</button></li>
+					<li><button>НОВОСТИ</button></li>
+					<li><button>КОНТАКТЫ</button></li>
+					<li><button>КАБИНЕТ</button></li>
+					<li><button data="openCartMenu">КОРЗИНА</button></li>
+				</ul>
+			</div>
+			<!-- ------------------------------------------------------------------------- -->
+			<!-- Корзина -->
+			<div id="BlurForModalWin" class="hidden"></div>
+			<div class="cartWrap hidden">
+				<div class="cartWrap_exitContainer">
+					<button class="cartWrap_exit">X</button>
+				</div>
+				<div class="cartWrap_container"></div>
+				<div>
+					<p class="cartWrap__totalPrice">0 <span>грн.</span></p>
+					<button class="cartWrap__order">Замовити</button>
+				</div>
+			</div>
     <div class="wrap">
         <main class="main">
             <nav class="main__nav">
                 <div class="nav__upperNav">
+                    <i class="fa-solid fa-bars nav__burgerMenu"></i>
                     <img src="images/logo.png" alt="Миюши лого" class="upperNav__logo">
                     <p class="Kyiv__city"><img src="images/maps-and-flags.png" alt="">г. Киев</p>
                     <p class="email__adress"><img src="images/envelope.png" alt="envelope">test@gmail.com</p>
@@ -19,87 +97,1738 @@
                             <p class="info__phone">+380 (800) 333 2 222</p>
                             <p class="info__time">Работаем с 11.00 до 23.00</p>
                         </div>
-                        <button class="graphic__backCall">Обратный звонок</button>
+                        <button class="graphic__backCall" id="openModal">ОБРАТНЫЙ ЗВОНОК</button>
                     </div>
                 </div>
                 <div class="nav__lowerNav">
-                    <button>МЕНЮ</button>
-                    <button>АКЦИИ И СКИДКИ</button>
-                    <button>ДОСТАВКА И ОПЛАТА</button>
-                    <button>НОВОСТИ</button>
-                    <button>КОНТАКТЫ</button>
-                    <button>КАБИНЕТ</button>
-                    <button>КОРЗИНА</button>
+                    <button class="lowerNav_button">МЕНЮ</button>
+                    <button class="lowerNav_button">АКЦИИ И СКИДКИ</button>
+                    <button class="lowerNav_button">ДОСТАВКА И ОПЛАТА</button>
+                    <button class="lowerNav_button">НОВОСТИ</button>
+                    <button class="lowerNav_button">КОНТАКТЫ</button>
+                    <button class="lowerNav_button"><img class="cabinetimage"src="images/cabinet.png" alt="">КАБИНЕТ</button>
+                    <button openCartMenu class="lowerNav_button"><img class="cartnavimage"src="images/cartnav.png" alt="">КОРЗИНА</button>
                 </div>
             </nav>
-            <swiper-container class="mySwiper" navigation="true" pagination="true" keyboard="true" mousewheel="true"
-                css-mode="true">
-                <swiper-slide>
-                    <header class="header">
+            <div class="swiper first-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide header-slide">
                         <div class="header__box">
-                            <h2 class="box__title_header">Очень дешево</h2>
+                            <h2 class="box__title_header">Счастливые  часы</h2>
                             <div class="box__discount_header">скидка 15%</div>
                         </div>
-                        <p class="header__time">С 11:00 до 16:00 в будние дни</p>
+                        <p class="header__time">с 11:00 до 16:00 в будние дни</p>
                         <button class="header__more">ПОДРОБНЕЕ</button>
-                    </header>
-                </swiper-slide>
-                <swiper-slide>
-                    <header class="header">
+                    </div>
+                    <div class="swiper-slide header__slide">
                         <div class="header__box">
-                            <h2 class="box__title_header">Быстрая доставка</h2>
+                            <h2 class="box__title_header">Счастливые  часы</h2>
                             <div class="box__discount_header">скидка 15%</div>
                         </div>
-                        <p class="header__time">С 11:00 до 16:00 в будние дни</p>
+                        <p class="header__time">с 11:00 до 16:00 в будние дни</p>
                         <button class="header__more">ПОДРОБНЕЕ</button>
-                    </header>
-                </swiper-slide>
-                <swiper-slide>
-                    <header class="header">
+                    </div>
+                    <div class="swiper-slide  header__slide">
                         <div class="header__box">
-                            <h2 class="box__title_header">Счастливые часы</h2>
+                            <h2 class="box__title_header">Счастливые  часы</h2>
                             <div class="box__discount_header">скидка 15%</div>
                         </div>
-                        <p class="header__time">С 11:00 до 16:00 в будние дни</p>
+                        <p class="header__time">с 11:00 до 16:00 в будние дни</p>
                         <button class="header__more">ПОДРОБНЕЕ</button>
-                    </header>
-                </swiper-slide>
-            </swiper-container>
+                    </div>
+                </div>
+                <div class="swiper-pagination first-pagination"></div>
+                <div class="swiper-button-prev first-prev"><img class="swiper-arrow" src="images/leftarrow.png" alt=""></div>
+                <div class="swiper-button-next first-next"><img class="swiper-arrow" src="images/rightarrow.png" alt=""></div>
+            </div>
             <div class="main_container">
-                <h3 class="main__titleWeb">Сети</h3>
+                <div class="title">
+                <img class="patternleft" src="images/pattern.png" alt="">
+                <h3 class="main__titleWeb">Сеты</h3>
+                <img class="patternright" src="images/pattern.png" alt="">
+            </div>
+                    <div class="swiper second-swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="main__Web">
+                                <div class="Web__box">
+                                    <img src="images/sushi1.png" alt="sushi1" class="box__image_web">
+                                    <div class="box__hit">ХИТ</div>
+                                    <h3 class="box__title_web">Сет №10</h3>
+                                    <p class="box__info_web">72 шт. | 1560 г. | 1700 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">2 050 грн..</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/sushi2.png" alt="sushi2" class="box__image_web">
+                                    <h3 class="box__title_web">Сет №8</h3>
+                                    <p class="box__info_web">24 шт. | 960 г. | 800 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">1 590 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/sushi3.png" alt="sushi3" class="box__image_web">
+                                    <h3 class="box__title_web">Минисет №5</h3>
+                                    <p class="box__info_web">14 шт. | 450 г. | 400 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">510 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <div class="box__tagVeg">veg</div>
+                                    <img src="images/sushi4.png" alt="sushi4" class="box__image_web">
+                                    <h3 class="box__title_web">Сет №6</h3>
+                                    <p class="box__info_web">16 шт. | 460 г. | 490 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">400 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="main__Web">
+                                <div class="Web__box">
+                                    <img src="images/sushi1.png" alt="sushi1" class="box__image_web">
+                                    <div class="box__hit">ХИТ</div>
+                                    <h3 class="box__title_web">Сет №10</h3>
+                                    <p class="box__info_web">72 шт. | 1560 г. | 1700 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">2 050 грн..</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/sushi2.png" alt="sushi2" class="box__image_web">
+                                    <h3 class="box__title_web">Сет №8</h3>
+                                    <p class="box__info_web">24 шт. | 960 г. | 800 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">1 590 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/sushi3.png" alt="sushi3" class="box__image_web">
+                                    <h3 class="box__title_web">Минисет №5</h3>
+                                    <p class="box__info_web">14 шт. | 450 г. | 400 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">510 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button data-cart class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <div class="box__tagVeg">veg</div>
+                                    <img src="images/sushi4.png" alt="sushi4" class="box__image_web">
+                                    <h3 class="box__title_web">Сет №6</h3>
+                                    <p class="box__info_web">16 шт. | 460 г. | 490 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">400 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="main__Web">
+                                <div class="Web__box">
+                                    <img src="images/sushi1.png" alt="sushi1" class="box__image_web">
+                                    <div class="box__hit">ХИТ</div>
+                                    <h3 class="box__title_web">Сет №10</h3>
+                                    <p class="box__info_web">72 шт. | 1560 г. | 1700 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">2 050 грн..</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/sushi2.png" alt="sushi2" class="box__image_web">
+                                    <h3 class="box__title_web">Сет №8</h3>
+                                    <p class="box__info_web">24 шт. | 960 г. | 800 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">1 590 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/sushi3.png" alt="sushi3" class="box__image_web">
+                                    <h3 class="box__title_web">Минисет №5</h3>
+                                    <p class="box__info_web">14 шт. | 450 г. | 400 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">510 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <div class="box__tagVeg">veg</div>
+                                    <img src="images/sushi4.png" alt="sushi4" class="box__image_web">
+                                    <h3 class="box__title_web">Сет №6</h3>
+                                    <p class="box__info_web">16 шт. | 460 г. | 490 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">400 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="main__Web">
+                                <div class="Web__box">
+                                    <img src="images/sushi1.png" alt="sushi1" class="box__image_web">
+                                    <div class="box__hit">ХИТ</div>
+                                    <h3 class="box__title_web">Сет №10</h3>
+                                    <p class="box__info_web">72 шт. | 1560 г. | 1700 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">2 050 грн..</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/sushi2.png" alt="sushi2" class="box__image_web">
+                                    <h3 class="box__title_web">Сет №8</h3>
+                                    <p class="box__info_web">24 шт. | 960 г. | 800 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">1 590 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/sushi3.png" alt="sushi3" class="box__image_web">
+                                    <h3 class="box__title_web">Минисет №5</h3>
+                                    <p class="box__info_web">14 шт. | 450 г. | 400 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">510 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <div class="box__tagVeg">veg</div>
+                                    <img src="images/sushi4.png" alt="sushi4" class="box__image_web">
+                                    <h3 class="box__title_web">Сет №6</h3>
+                                    <p class="box__info_web">16 шт. | 460 г. | 490 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">400 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart  class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="main__Web">
+                                <div class="Web__box">
+                                    <img src="images/sushi1.png" alt="sushi1" class="box__image_web">
+                                    <div class="box__hit">ХИТ</div>
+                                    <h3 class="box__title_web">Сет №10</h3>
+                                    <p class="box__info_web">72 шт. | 1560 г. | 1700 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">2 050 грн..</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/sushi2.png" alt="sushi2" class="box__image_web">
+                                    <h3 class="box__title_web">Сет №8</h3>
+                                    <p class="box__info_web">24 шт. | 960 г. | 800 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">1 590 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart  class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/sushi3.png" alt="sushi3" class="box__image_web">
+                                    <h3 class="box__title_web">Минисет №5</h3>
+                                    <p class="box__info_web">14 шт. | 450 г. | 400 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">510 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <div class="box__tagVeg">veg</div>
+                                    <img src="images/sushi4.png" alt="sushi4" class="box__image_web">
+                                    <h3 class="box__title_web">Сет №6</h3>
+                                    <p class="box__info_web">16 шт. | 460 г. | 490 Kkal</p>
+                                    <div class="box_container">
+                                        <p class="box__cost_web">400 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination second-pagination"></div>
+                        <div class="swiper-button-prev second-prev"><img class="swiper-arrow" src="images/secondleftarrow.png" alt=""></div>
+                        <div class="swiper-button-next second-next"><img class="swiper-arrow" src="images/secondrightarrow.png" alt=""></div>
+                    </div>
+                    <div class="title">
+                        <img class="patternleft" src="images/pattern.png" alt="">
+                        <h3 class="main__titleWeb">Роллы</h3>
+                        <img class="patternright" src="images/pattern.png" alt="">
+                    </div>
+                    <!-- ROLL -->
+                    <div class="swiper second-swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="main__Web">
+                                <div class="Web__box">
+                                    <img src="images/roll1.png" alt="roll3" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Кунсей батакон</h3>
+                            <p class="box__info_web">8 шт. | 250 г. | 350 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">260 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <div class="box__tagHit"><img src="images/flame.png" alt=""></div>
+                                    <img src="images/roll2.png" alt="roll3" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Унаги диру</h3>
+                            <p class="box__info_web">8 шт. | 960 г. | 800 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">280 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/roll3.png" alt="roll3" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Филадельфия</h3>
+                            <p class="box__info_web">8 шт. | 450 г. | 400 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">280 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/roll4.png" alt="roll4" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Мексиканский</h3>
+                            <p class="box__info_web">8 шт. | 460 г. | 490 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">290 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="main__Web">
+                                <div class="Web__box">
+                                    <img src="images/roll1.png" alt="roll3" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Кунсей батакон</h3>
+                            <p class="box__info_web">8 шт. | 250 г. | 350 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">260 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <div class="box__tagHit"><img src="images/flame.png" alt=""></div>
+                                    <img src="images/roll2.png" alt="roll3" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Унаги диру</h3>
+                            <p class="box__info_web">8 шт. | 960 г. | 800 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">280 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/roll3.png" alt="roll3" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Филадельфия</h3>
+                            <p class="box__info_web">8 шт. | 450 г. | 400 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">280 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/roll4.png" alt="roll4" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Мексиканский</h3>
+                            <p class="box__info_web">8 шт. | 460 г. | 490 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">290 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="main__Web">
+                                <div class="Web__box">
+                                    <img src="images/roll1.png" alt="roll3" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Кунсей батакон</h3>
+                            <p class="box__info_web">8 шт. | 250 г. | 350 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">260 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <div class="box__tagHit"><img src="images/flame.png" alt=""></div>
+                                    <img src="images/roll2.png" alt="roll3" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Унаги диру</h3>
+                            <p class="box__info_web">8 шт. | 960 г. | 800 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">280 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/roll3.png" alt="roll3" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Филадельфия</h3>
+                            <p class="box__info_web">8 шт. | 450 г. | 400 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">280 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/roll4.png" alt="roll4" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Мексиканский</h3>
+                            <p class="box__info_web">8 шт. | 460 г. | 490 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">290 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="main__Web">
+                                <div class="Web__box">
+                                    <img src="images/roll1.png" alt="roll3" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Кунсей батакон</h3>
+                            <p class="box__info_web">8 шт. | 250 г. | 350 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">260 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <div class="box__tagHit"><img src="images/flame.png" alt=""></div>
+                                    <img src="images/roll2.png" alt="roll3" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Унаги диру</h3>
+                            <p class="box__info_web">8 шт. | 960 г. | 800 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">280 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/roll3.png" alt="roll3" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Филадельфия</h3>
+                            <p class="box__info_web">8 шт. | 450 г. | 400 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">280 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/roll4.png" alt="roll4" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Мексиканский</h3>
+                            <p class="box__info_web">8 шт. | 460 г. | 490 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">290 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="main__Web">
+                                <div class="Web__box">
+                                    <img src="images/roll1.png" alt="roll3" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Кунсей батакон</h3>
+                            <p class="box__info_web">8 шт. | 250 г. | 350 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">260 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <div class="box__tagHit"><img src="images/flame.png" alt=""></div>
+                                    <img src="images/roll2.png" alt="roll3" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Унаги диру</h3>
+                            <p class="box__info_web">8 шт. | 960 г. | 800 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">280 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/roll3.png" alt="roll3" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Филадельфия</h3>
+                            <p class="box__info_web">8 шт. | 450 г. | 400 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">280 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                                <div class="Web__box">
+                                    <img src="images/roll4.png" alt="roll4" class="box__image_web image__roll">
+                                    <h3 class="box__title_web">Мексиканский</h3>
+                            <p class="box__info_web">8 шт. | 460 г. | 490 Kkal</p>
+                            <div class="box_container">
+                                <p class="box__cost_web">290 грн.</p>
+                                        <div class="box__amount_container">
+                                            <button class="amount__descrease">-</button>
+                                            <p class="amount">1</p>
+                                            <button class="amount__increase">+</button>
+                                        </div>
+                                    </div>
+                                    <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                </div>
+                            </div>
+                            </div>
+                                </div>
+                                <div class="swiper-pagination second-pagination"></div>
+                        <div class="swiper-button-prev second-prev"><img class="swiper-arrow" src="images/secondleftarrow.png" alt=""></div>
+                        <div class="swiper-button-next second-next"><img class="swiper-arrow" src="images/secondrightarrow.png" alt=""></div>
+                            </div>
+                            <div class="title">
+                                <img class="patternleft" src="images/pattern.png" alt="">
+                                <h3 class="main__titleWeb">Пицца</h3>
+                                <img class="patternright" src="images/pattern.png" alt="">
+                            </div>
+                            <!-- PIZZA -->
+                            <div class="swiper second-swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="main__Web">
+                                            <div class="Web__box">
+                                                <img src="images/pizza1.png" alt="sushi1" class="box__image_web">
+                                                <h3 class="box__title_web">Баварская</h3>
+                                                <p class="box__info_web">33 см | 680 г. | 1350 Kkal</p>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">480<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                            <div class="Web__box">
+                                                <div class="box__tagHit"><img src="images/flame.png" alt=""></div>
+                                                <img src="images/pizza2.png" alt="sushi3" class="box__image_web">
+                                                <h3 class="box__title_web">Вегетарианская</h3>
+                                                <p class="box__info_web">33 см | 755 г. | 1800 Kkal</p>
+                                                <div class="box_container">
+                                                <p class="box__cost_web-pizza">380<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                            <div class="Web__box">
+                                                <img src="images/pizza3.png" alt="sushi4" class="box__image_web">
+                                                <h3 class="box__title_web">Пепперони</h3>
+                                                <p class="box__info_web">33 см | 615 г. | 1400 Kkal</p>
+                                                <div class="box_container">
+                                                <p class="box__cost_web-pizza">450<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                            <div class="Web__box">
+                                                <img src="images/pizza4.png" alt="sushi4" class="box__image_web">
+                                                <h3 class="box__title_web">Классическая</h3>
+                                                <p class="box__info_web">33 см | 590 г. | 1490 Kkal</p>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">390<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="main__Web">
+                                            <div class="Web__box">
+                                                <img src="images/pizza1.png" alt="sushi1" class="box__image_web">
+                                                <h3 class="box__title_web">Баварская</h3>
+                                                <p class="box__info_web">33 см | 680 г. | 1350 Kkal</p>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">480<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                            <div class="Web__box">
+                                                <div class="box__tagHit"><img src="images/flame.png" alt=""></div>
+                                                <img src="images/pizza2.png" alt="sushi3" class="box__image_web">
+                                                <h3 class="box__title_web">Вегетарианская</h3>
+                                                <p class="box__info_web">33 см | 755 г. | 1800 Kkal</p>
+                                                <div class="box_container">
+                                                <p class="box__cost_web-pizza">380<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                            <div class="Web__box">
+                                                <img src="images/pizza3.png" alt="sushi4" class="box__image_web">
+                                                <h3 class="box__title_web">Пепперони</h3>
+                                                <p class="box__info_web">33 см | 615 г. | 1400 Kkal</p>
+                                                <div class="box_container">
+                                                <p class="box__cost_web-pizza">450<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                            <div class="Web__box">
+                                                <img src="images/pizza4.png" alt="sushi4" class="box__image_web">
+                                                <h3 class="box__title_web">Классическая</h3>
+                                                <p class="box__info_web">33 см | 590 г. | 1490 Kkal</p>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">390<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="main__Web">
+                                            <div class="Web__box">
+                                                <img src="images/pizza1.png" alt="sushi1" class="box__image_web">
+                                                <h3 class="box__title_web">Баварская</h3>
+                                                <p class="box__info_web">33 см | 680 г. | 1350 Kkal</p>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">480<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                            <div class="Web__box">
+                                                <div class="box__tagHit"><img src="images/flame.png" alt=""></div>
+                                                <img src="images/pizza2.png" alt="sushi3" class="box__image_web">
+                                                <h3 class="box__title_web">Вегетарианская</h3>
+                                                <p class="box__info_web">33 см | 755 г. | 1800 Kkal</p>
+                                                <div class="box_container">
+                                                <p class="box__cost_web-pizza">380<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                            <div class="Web__box">
+                                                <img src="images/pizza3.png" alt="sushi4" class="box__image_web">
+                                                <h3 class="box__title_web">Пепперони</h3>
+                                                <p class="box__info_web">33 см | 615 г. | 1400 Kkal</p>
+                                                <div class="box_container">
+                                                <p class="box__cost_web-pizza">450<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                            <div class="Web__box">
+                                                <img src="images/pizza4.png" alt="sushi4" class="box__image_web">
+                                                <h3 class="box__title_web">Классическая</h3>
+                                                <p class="box__info_web">33 см | 590 г. | 1490 Kkal</p>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">390<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="main__Web">
+                                            <div class="Web__box">
+                                                <img src="images/pizza1.png" alt="sushi1" class="box__image_web">
+                                                <h3 class="box__title_web">Баварская</h3>
+                                                <p class="box__info_web">33 см | 680 г. | 1350 Kkal</p>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">480<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                            <div class="Web__box">
+                                                <div class="box__tagHit"><img src="images/flame.png" alt=""></div>
+                                                <img src="images/pizza2.png" alt="sushi3" class="box__image_web">
+                                                <h3 class="box__title_web">Вегетарианская</h3>
+                                                <p class="box__info_web">33 см | 755 г. | 1800 Kkal</p>
+                                                <div class="box_container">
+                                                <p class="box__cost_web-pizza">380<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                            <div class="Web__box">
+                                                <img src="images/pizza3.png" alt="sushi4" class="box__image_web">
+                                                <h3 class="box__title_web">Пепперони</h3>
+                                                <p class="box__info_web">33 см | 615 г. | 1400 Kkal</p>
+                                                <div class="box_container">
+                                                <p class="box__cost_web-pizza">450<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                            <div class="Web__box">
+                                                <img src="images/pizza4.png" alt="sushi4" class="box__image_web">
+                                                <h3 class="box__title_web">Классическая</h3>
+                                                <p class="box__info_web">33 см | 590 г. | 1490 Kkal</p>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">390<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="main__Web">
+                                            <div class="Web__box">
+                                                <img src="images/pizza1.png" alt="sushi1" class="box__image_web">
+                                                <h3 class="box__title_web">Баварская</h3>
+                                                <p class="box__info_web">33 см | 680 г. | 1350 Kkal</p>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">480<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart  class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                            <div class="Web__box">
+                                                <div class="box__tagHit"><img src="images/flame.png" alt=""></div>
+                                                <img src="images/pizza2.png" alt="sushi3" class="box__image_web">
+                                                <h3 class="box__title_web">Вегетарианская</h3>
+                                                <p class="box__info_web">33 см | 755 г. | 1800 Kkal</p>
+                                                <div class="box_container">
+                                                <p class="box__cost_web-pizza">380<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                            <div class="Web__box">
+                                                <img src="images/pizza3.png" alt="sushi4" class="box__image_web">
+                                                <h3 class="box__title_web">Пепперони</h3>
+                                                <p class="box__info_web">33 см | 615 г. | 1400 Kkal</p>
+                                                <div class="box_container">
+                                                <p class="box__cost_web-pizza">450<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                            <div class="Web__box">
+                                                <img src="images/pizza4.png" alt="sushi4" class="box__image_web">
+                                                <h3 class="box__title_web">Классическая</h3>
+                                                <p class="box__info_web">33 см | 590 г. | 1490 Kkal</p>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">390<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-pizza">В КОРЗИНУ<img src="images/cart.png" class="buy__cart"></button>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                </div> 
+                                <div class="swiper-pagination second-pagination"></div>
+                        <div class="swiper-button-prev second-prev"><img class="swiper-arrow" src="images/secondleftarrow.png" alt=""></div>
+                        <div class="swiper-button-next second-next"><img class="swiper-arrow" src="images/secondrightarrow.png" alt=""></div>
+                            </div>  
+                            <div class="title">
+                                <img class="patternleft" src="images/pattern.png" alt="">
+                                <h3 class="main__titleWeb">WOK</h3>
+                                <img class="patternright" src="images/pattern.png" alt="">
+                            </div>
+                            <!-- WOK  -->
+                            <div class="swiper second-swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <div class="main__Web">
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK1.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С говядиной</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">430<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK2.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С курицей</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">290<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK3.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С морепродуктами</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>      
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">430<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK4.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С овощами</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web">430<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="main__Web">
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK1.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С говядиной</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">430<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK2.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С курицей</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">290<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK3.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С морепродуктами</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>      
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">430<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK4.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С овощами</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web">430<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="main__Web">
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK1.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С говядиной</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">430<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK2.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С курицей</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">290<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK3.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С морепродуктами</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>      
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">430<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK4.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С овощами</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web">430<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="main__Web">
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK1.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С говядиной</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">430<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK2.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С курицей</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">290<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK3.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С морепродуктами</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>      
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">430<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK4.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С овощами</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web">430<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <div class="main__Web">
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK1.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С говядиной</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">430<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK2.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С курицей</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">290<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK3.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С морепродуктами</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>      
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web-pizza">430<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button data-cart class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                            <div class="Web__box-wok">
+                                                <img src="images/WOK4.png" class="box__image_web image__roll">
+                                                <h3 class="box__title_web">С овощами</h3>
+                                                <p class="box__info_web">400 г. | 1350 Kkal</p>
+                                                <div class="box__add">
+                                                    <p class="add__title">Добавить:</p>
+                                                    <p class="add__input">+0<button class="input__cancel">x</button></p>
+                                                    <p class="add__cost">0руб.</p>
+                                                    <button class="add_box">+</button>
+                                                </div>
+                                                <select class="box__select"><option value="">Китайский соус</option></select>
+                                                <div class="box_container">
+                                                    <p class="box__cost_web">430<br>руб.</p>
+                                                    <div class="box__amount_container">
+                                                        <button class="amount__descrease">-</button>
+                                                        <p class="amount">1</p>
+                                                        <button data-cart class="amount__increase">+</button>
+                                                    </div>
+                                                </div>
+                                                <button class="box__buy-wok">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-pagination second-pagination novinki"></div>
+                                <div class="swiper-button-prev second-prev novinkiarrow"><img class="swiper-arrow" src="images/secondleftarrow.png" alt=""></div>
+                                <div class="swiper-button-next second-next novinkiarrow"><img class="swiper-arrow novinki" src="images/secondrightarrow.png" alt=""></div>
+                            </div>
+                             <!-- Новинки Акции -->
+            <div class="NewAndDiscount_cotainer">
+                <div class="NewAndDiscount_buttonsContainer">
+                    <button class="NewAndDiscount__New">Новинки</button>
+                    <button class="NewAndDiscount__Discount">Акции</button>
+                </div>
                 <div class="main__Web">
                     <div class="Web__box">
-                        <img src="images/sushi1.png" alt="sushi1" class="box__image_web">
-                        <h3 class="box__title_web">Сет N10</h3>
-                        <p class="box__info_web">72 шт. | 1560 г. | 1700 Kkal</p>
+                        <div class="box__new">new</div>
+                        <img src="images/roll1.png" class="box__image_web image__roll">
+                        <h3 class="box__title_web">С морепродуктами</h3>
+                        <p class="box__info_web">400 г. | 1350 Kkal</p>
                         <div class="box_container">
-                            <p class="box__cost_web">2050 грн.</p>
+                            <p class="box__cost_web">260 грн.</p>
                             <div class="box__amount_container">
                                 <button class="amount__descrease">-</button>
                                 <p class="amount">1</p>
                                 <button class="amount__increase">+</button>
                             </div>
                         </div>
+                        <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
                     </div>
                     <div class="Web__box">
-                        <img src="images/sushi2.png" alt="sushi2" class="box__image_web">
-                        <h3 class="box__title_web">Сет N8</h3>
-                        <p class="box__info_web">24 шт. | 960 г. | 800 Kkal</p>
+                        <div class="box__new">new</div>
+                        <div class="box__tagHit"><img src="images/flame.png" alt=""></div>
+                        <img src="images/roll2.png" class="box__image_web image__roll">
+                        <h3 class="box__title_web">С морепродуктами</h3>
+                        <p class="box__info_web">400 г. | 1350 Kkal</p>
+                        <div class="box_container">
+                            <p class="box__cost_web">280 грн.</p>
+                            <div class="box__amount_container">
+                                <button class="amount__descrease">-</button>
+                                <p class="amount">1</p>
+                                <button class="amount__increase">+</button>
+                            </div>
+                        </div>
+                        <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
                     </div>
                     <div class="Web__box">
-                        <img src="images/sushi3.png" alt="sushi3" class="box__image_web">
-                        <h3 class="box__title_web">Минисет N5</h3>
-                        <p class="box__info_web">14 шт. | 450 г. | 400 Kkal</p>
+                        <div class="box__new">new</div>
+                        <img src="images/roll3.png" class="box__image_web image__roll">
+                        <h3 class="box__title_web">С морепродуктами</h3>
+                        <p class="box__info_web">400 г. | 1350 Kkal</p>
+                        <div class="box_container">
+                            <p class="box__cost_web">280 грн.</p>
+                            <div class="box__amount_container">
+                                <button class="amount__descrease">-</button>
+                                <p class="amount">1</p>
+                                <button class="amount__increase">+</button>
+                            </div>
+                        </div>
+                        <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
                     </div>
                     <div class="Web__box">
-                        <img src="images/sushi4.png" alt="sushi4" class="box__image_web">
-                        <h3 class="box__title_web">Сет N6</h3>
-                        <p class="box__info_web">16 шт. | 460 г. | 490 Kkal</p>
+                        <div class="box__new">new</div>
+                        <img src="images/roll1.png" class="box__image_web image__roll">
+                        <h3 class="box__title_web">С морепродуктами</h3>
+                        <p class="box__info_web">400 г. | 1350 Kkal</p>
+                        <div class="box_container">
+                            <p class="box__cost_web">290 грн.</p>
+                            <div class="box__amount_container">
+                                <button class="amount__descrease">-</button>
+                                <p class="amount">1</p>
+                                <button class="amount__increase">+</button>
+                            </div>
+                        </div>
+                        <button data-cart class="box__buy">В КОРЗИНУ<img src="images/cart.png" alt=""></button>
                     </div>
                 </div>
+             </div>
+             <!-- 10 причин купить у нас -->
+              <div class="main__ReasonstoBuy">
+                <h2 class="ReasonstoBuy__title"><img src="images/leftDecor.png" alt="">10 причин купить у нас<img src="images/rightDecor.png" alt=""></h2>
+                <div class="ReasonstoBuy_container">
+                    <div class="ReasonstoBuy_column">
+                        <div class="column__content">
+                            <img src="images/column1_1.png" alt="">
+                            <p id="ReasonsToBuy__text1">100% ручная работа</p>
+                        </div>
+                        <div class="column__content">
+                            <img src="images/column1_2.png" alt="">
+                            <p id="ReasonsToBuy__text2">100% свежие ингредиенты</p>
+                        </div>
+                        <div class="column__content">
+                            <img src="images/column1_3.png" alt="">
+                            <p id="ReasonsToBuy__text3">Самые низкие цены на<br>рынке! (Нет<br>ресторанной наценки)</p>
+                        </div>
+                        <div class="column__content">
+                            <img src="images/column1_4.png" alt="">
+                            <p id="ReasonsToBuy__text4">Постоянный контроль<br>качества на всех этапах</p>
+                        </div>
+                        <div class="column__content">
+                            <img src="images/column1_5.png" alt="">
+                            <p id="ReasonsToBuy__text5">Только охлажденная рыба<br>(никакой заморозки)</p>
+                        </div>
+                    </div>
+                    <div class="ReasonstoBuy_column">
+                        <div class="column__content">
+                            <img src="images/column2_1.png" alt="">
+                            <p id="ReasonsToBuy__text6">Мы используем только<br>дорогой рис из Японии</p>
+                        </div>
+                        <div class="column__content">
+                            <img src="images/column2_2.png" alt="">
+                            <p id="ReasonsToBuy__text7">Больше начинки,<br>меньше риса!</p>
+                        </div>
+                        <div class="column__content">
+                            <img src="images/column2_3.png" alt="">
+                            <p id="ReasonsToBuy__text8">Мы не заменяем<br>авокадо огурцом!</p>
+                        </div>
+                        <div class="column__content">
+                            <img src="images/column2_4.png" alt="">
+                            <p id="ReasonsToBuy__text9">Вся пицца готовится<br>из итальянской муки<br>и Итальянского соуса</p>
+                        </div>
+                        <div class="column__content">
+                            <img src="images/column2_5.png" alt="">
+                            <p id="ReasonsToBuy__text10">Мы не используем майонез!</p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <!-- Отзывы -->
+               <div class="main__reviews">
+                    <h2 class="reviews__title"><img src="images/leftDecor.png" alt="">Отзывы<img src="images/rightDecor.png" alt=""></h2>
+                    <div class="reviews_container">
+                       <img src="images/review.png" alt="" class="reviews">
+                       <img src="images/review.png" alt="" class="reviews">
+                       <img src="images/review.png" alt="" class="reviews">
+                    </div>
+               </div>
+               <!-- Форма -->
+               <div class="main__form">
+                <img src="images/pottery.png" alt="pottery" class="form__image" />
+                <div class="form_container">
+                    <h5 class="form__preTitle">Есть вопросы?</h5>
+                    <h2 class="form__title">Оставьте свои контакты</h2>
+                    <form class="form_inputContainer" id="justValidateForm">
+                        <input
+                            type="text"
+                            class="form__input"
+                            placeholder="Имя"
+                            id="form__name"
+                        />
+                        <input
+                            type="text"
+                            class="form__input"
+                            placeholder="Телефон"
+                            id="form__phone"
+                        />
+                        <button type="submit" class="form__button" id="FormOpenModal">
+                            Отправить
+                        </button>
+                    </form>
+                    <p class="form__text">
+                        Нажимая на кнопку «Отправить», вы даете согласие на обработку
+                        своих персональних данных
+                    </p>
+                </div>
             </div>
+                <!-- О компании -->
+                 <div class="main__company">
+                    <h2 class="company__title"><img src="images/leftDecor.png" alt="">О компании<img src="images/rightDecor.png" alt=""></h2>
+                    <div class="company_container">
+                        <div class="company_textContainer">
+                            <h3 class="company__describe">Заказ и доставка роллов, пиццы и WOK(Вок) в городе Курск</h3>
+                            <p class="company__text">Суши МИЮШИ открылись в октябре 2012г. и уже завоевали успех у тех, кто ценит японскую кухню и качественное приготовление<br>блюд.<br><br>
+
+                                С 2013 года мы осуществляем не только доставку на дом, теперь для вас открыт наш уютный небольшой зал. Придя сюда, вы сможете<br>плотно пообедать, насладиться прекрасными напитками, посидеть с друзьями или обзавестись новыми знакомствами.<br><br>
+                                
+                                Открывая зал, Мы преследовали цель предоставить своим посетителям максимум удобства и комфорта, поэтому, придя сюда в первый<br>раз, вы почувствуете себя как рыба в воде, окунувшись в домашнюю и теплую обстановку!<br><br>
+                                
+                                Особое внимание мы уделяем организации доставки суши и других блюд, которая осуществляется только по г. Курске. Четкая и<br>слаженная работа курьеров позволяет максимально сократить время от приготовления блюда до его попадания на стол заказчику. Как<br>правило, оно составляет от 20 до 60 минут в зависимости от местонахождения клиента. Операторы службы доставки всегда<br>осведомлены обо всех изменениях времени доставки и предупреждают клиентов заранее, а при возможных серьезных задержках в<br>связи с дорожной ситуацией предложат Вам альтернативу. Мы беремся только за ту работу, которую можем выполнить в срок.<br><br>
+                                
+                                В меню суши МИЮШИ представлено все многообразие японской кухни. Классические суши, и роллы приготовлены в соответствии с<br>традиционными рецептами. Для любителей нежных и тающих во рту блюд предлагаются роллы с мясом краба, а также для больших<br>любителей копченого угря потрясающий ролл Дракон. Для желающих пробовать что-то новое и необычное – острые ГУНКАНЫ и<br>новинка нашего меню - ИНАРИ, широкий выбор горячих роллов. Большим компаниям будет удобно заказать суши и роллы,<br>объединенные в сеты, включающие сразу несколько видов каждого из этих блюд. Кроме того, меню суши МИЮШИ не ограничено<br>только японской кухней, здесь всегда можно заказать горячие и холодные блюда ЛАПША или РИС WOK с различными мясными и<br>рыбными наполнителями, салаты, горячие закуски и различные напитки.<br><br>
+                                
+                                Оформив у нас заказ суши на дом, клиент может выбрать удобный ему способ оплаты: наличными при получении заказа или<br>банковской картой VISA, MasterCard при заполнении специальной формы заказа на сайте или на дому через переносной терминал<br>(заранее сообщив оператору о форме оплаты).<br><br>
+                                
+                                Информацию по стоимости доставки и минимальной суммы заказа в отдаленные районы г. Мытищ можно уточнить у оператора по<br>телефону.
+                            </p>
+                        </div>
+                        <img src="images/companyImage.png" alt="" class="company__image">
+                    </div>
+                 </div>
         </main>
-    </div>   
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+        <footer class="footer">
+            <div class="footer_container">
+                <ul class="footer__list">
+                    <li class="list__item">Суши</li>
+                    <li class="list__item">Гунканы</li>
+                    <li class="list__item">Инари</li>
+                    <li class="list__item">Супы</li>
+                    <li class="list__item">Салаты</li>
+                    <li class="list__item">Горячие закуски</li>
+                    <li class="list__item">Десерты</li>
+                    <li class="list__item">Напитки</li>
+                    <li class="list__item">Дополнительно</li>
+                </ul>
+                <ul class="footer__list">
+                    <h5 class="list__title">Сеты</h5>
+                    <li class="list__itemUnique">До 500 руб.</li>
+                    <li class="list__itemUnique">До 1000 руб. для двоих</li>
+                    <li class="list__itemUnique">До 1500 руб. для двоих -<br>троих</li>
+                    <li class="list__itemUnique">До 2000 руб. большая<br>кампания</li>
+                    <li class="list__itemUnique">От 2000 руб. очень<br>большая кампания</li>
+                </ul>
+                <ul class="footer__list">
+                    <li class="list__itemUnique">С угрем</li>
+                    <li class="list__itemUnique">Горячие</li>
+                    <li class="list__itemUnique">Запечен<br>ые</li>
+                    <li class="list__itemUnique">Суши</li>
+                </ul>
+                <ul class="footer__list">
+                    <h5 class="list__title">Роллы</h5>
+                    <li class="list__itemUnique">Традиционные/<br>Класичиские</li>
+                    <li class="list__itemUnique">Простые</li>
+                    <li class="list__itemUnique">Теплые</li>
+                    <li class="list__itemUnique">Запеченные</li>
+                    <li class="list__itemUnique">Вегитарианские</li>
+                </ul>
+                <ul class="footer__list">
+                    <h5 class="list__title">Вок</h5>
+                    <li class="list__itemUnique">Яичная</li>
+                    <li class="list__itemUnique">Удон</li>
+                    <li class="list__itemUnique">Гречне<br>вая</li>
+                    <li class="list__itemUnique">Стеклян<br>ная</li>
+                    <li class="list__itemUnique">Рис</li>
+                </ul>
+                <ul class="footer__list">
+                    <h5 class="list__title">Пицца</h5>
+                    <li class="list__itemUnique">Мясная</li>
+                    <li class="list__itemUnique">Рыбная</li>
+                    <li class="list__itemUnique">Сырная</li>
+                    <li class="list__itemUnique">Вегитариа<br>нская</li>
+                </ul>
+            </div>
+            <div class="footer__lowerContainer">
+                <p class="lowerContainer__copyrights_footer">МИЮШИ © 2017</p>
+                <p class="lowerContainer__agreement_footer">Соглашение на обработку персональных данных</p>
+                <div class="lowerContainer__socialMedia">
+                    <img src="images/Instagram.png" alt="">
+                    <img src="images/vk.png" alt="">
+                    <img src="images/facebook.png" alt="">
+                </div>
+            </div>
+        </footer>
+                            </div>
+                        </div>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/BurgerMenu.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/modalWindow.js"></script>
+    <script src="js/validate.js"></script>
+    <script>
+const swiper1 = new Swiper('.first-swiper', {
+  direction: 'horizontal',
+  loop: true,
+  pagination: {
+    el: '.first-pagination',
+  },
+  navigation: {
+    nextEl: '.first-next',
+    prevEl: '.first-prev',
+  },
+});
+
+const swiper2 = new Swiper('.second-swiper', {
+  direction: 'horizontal',
+  loop: true,
+  pagination: {
+    el: '.second-pagination',
+  },
+  navigation: {
+    nextEl: '.second-next',
+    prevEl: '.second-prev',
+  },
+});
+    </script>
 </body>
 </html>
